@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="6.9.0.201310021215" AlpVersion="6.6.0">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="6.9.0.201303151214" AlpVersion="6.6.0">
 <Model>
 	<Id>1383578943314</Id>
 	<Name><![CDATA[SCSimulator]]></Name>
@@ -945,9 +945,9 @@ return NIndexSheets;]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[A1_Creator(DBSimulator);
+					<Body><![CDATA[A3_Creator(DBSimulator);
 A2_Creator(DBSimulator);
-A3_Creator(DBSimulator);
+A1_Creator(DBSimulator);
 tileGis.RestoreMap(256,256,1);
 tileGis.setZoom(-110,-5,5);]]></Body>
 				</Function>
@@ -1086,8 +1086,8 @@ return dis;
 }
   EstadisticasDashboard.clear();
 	for (int i=ContLevel;i<(ContLevel+4);i++){
-	    A1.get(i).PRV.get(0).Client.get(0).Dashboard.setY((i-ContLevel)*210);
-		EstadisticasDashboard.add(A1.get(i).PRV.get(0).Client.get(0).Dashboard);
+	    A1.get(i).PRD.get(0).Client.get(0).Dashboard.setY((i-ContLevel)*210);
+		EstadisticasDashboard.add(A1.get(i).PRD.get(0).Client.get(0).Dashboard);
 	}	]]></Body>
 				</Function>
 			</Functions>
@@ -11194,8 +11194,8 @@ if (segmentIndex < route.getPoints().size()) {
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[AManufacturer_PRV]]></Type>        
-						<InitialValue><![CDATA[get_AManufacturer_PRV();]]></InitialValue>                 	
+						<Type><![CDATA[AManufacturer_PRD]]></Type>        
+						<InitialValue><![CDATA[get_AManufacturer_PRD();]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -11312,7 +11312,7 @@ if(Back.State==Actor.State.ACTIVE){
 	HistogramArrivalTime.add(ArrivalTime);
 	HistogramDemand.add(Demand);
 	//Enviando demanda
-	Back.Information_InPort.receive(new Order(TYPE,0,Inventory.Type.PRODUCT,0,Demand));
+	Back.Information_Port.receive(new Order(TYPE,0,Inventory.Type.PRODUCT,0,Demand));
 }else Demand=0;
 	dataDemand.add(Demand);]]></Action>
 					</Properties>
@@ -11808,18 +11808,6 @@ if(Back.State==Actor.State.ACTIVE){
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1400433898525</Id>
-					<Name><![CDATA[IEsperado]]></Name>
-					<X>-630</X><Y>100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1400433898527</Id>
 					<Name><![CDATA[Max_Stock]]></Name>
 					<X>-330</X><Y>80</Y>
@@ -11834,7 +11822,7 @@ if(Back.State==Actor.State.ACTIVE){
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1400433898529</Id>
-					<Name><![CDATA[SPTmax]]></Name>
+					<Name><![CDATA[Qmax]]></Name>
 					<X>-780</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11897,12 +11885,12 @@ if(Back.State==Actor.State.ACTIVE){
 					<Width>52</Width>
 					<Height>12</Height>
 						<InitialValue><![CDATA[this.Qinitial]]></InitialValue>
-						<Color/>
+						<Color>-16744448</Color>
 					</Properties>
 				</Variable>
 				<Variable Class="StockVariable">
 					<Id>1402508772073</Id>
-					<Name><![CDATA[orders]]></Name>
+					<Name><![CDATA[IEsperado]]></Name>
 					<X>0</X><Y>-40</Y>
 					<Label><X>-30</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11913,7 +11901,7 @@ if(Back.State==Actor.State.ACTIVE){
 					<Width>52</Width>
 					<Height>12</Height>
 						<InitialValue><![CDATA[0]]></InitialValue>
-						<Color/>
+						<Color>-29696</Color>
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -12012,7 +12000,7 @@ if(Back.State==Actor.State.ACTIVE){
 					<Properties SaveInSnapshot="true" Dynamic="false">
 						<Type><![CDATA[double]]></Type>        
 						<DefaultValue><![CDATA[]]></DefaultValue>
-						<OnChangeCode><![CDATA[SPTmax=Qmin+Q]]></OnChangeCode>
+						<OnChangeCode><![CDATA[Qmax=Qmin+Q]]></OnChangeCode>
 						<ParameterEditor>
 							<Id>1400433898545</Id>
 							<Name><![CDATA[]]></Name>
@@ -12034,7 +12022,7 @@ if(Back.State==Actor.State.ACTIVE){
 					<Properties SaveInSnapshot="true" Dynamic="false">
 						<Type><![CDATA[double]]></Type>        
 						<DefaultValue><![CDATA[]]></DefaultValue>
-						<OnChangeCode><![CDATA[SPTmax=Qmin+Q]]></OnChangeCode>
+						<OnChangeCode><![CDATA[Qmax=Qmin+Q]]></OnChangeCode>
 						<ParameterEditor>
 							<Id>1400433898548</Id>
 							<Name><![CDATA[]]></Name>
@@ -12140,7 +12128,7 @@ if(Back.State==Actor.State.ACTIVE){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<IncomingMessageType><![CDATA[OrderRawMaterial]]></IncomingMessageType>
+					<IncomingMessageType><![CDATA[Ordern]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[Object]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
 					<OnReceiveAction><![CDATA[if (I <= 0)	Out_Of_Stock=true; else Out_Of_Stock=false;
@@ -12889,7 +12877,7 @@ if (I <= Qmin)	Min_Stock=true; else Min_Stock=false;
 				<Variable Class="PlainVariable">
 					<Id>1401534009181</Id>
 					<Name><![CDATA[State]]></Name>
-					<X>-640</X><Y>320</Y>
+					<X>-640</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12926,18 +12914,6 @@ if (I <= Qmin)	Min_Stock=true; else Min_Stock=false;
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1401539997524</Id>
-					<Name><![CDATA[Demand]]></Name>
-					<X>-340</X><Y>150</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1401767675114</Id>
 					<Name><![CDATA[HCIERRE]]></Name>
 					<X>-530</X><Y>120</Y>
@@ -12966,13 +12942,26 @@ if (I <= Qmin)	Min_Stock=true; else Min_Stock=false;
 				<Variable Class="PlainVariable">
 					<Id>1402493027165</Id>
 					<Name><![CDATA[TMPHour]]></Name>
-					<X>-640</X><Y>340</Y>
+					<X>-640</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1402643860524</Id>
+					<Name><![CDATA[distributor]]></Name>
+					<X>-480</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[ADistributor]]></Type>        
+						<InitialValue><![CDATA[null]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -13060,9 +13049,9 @@ if (I <= Qmin)	Min_Stock=true; else Min_Stock=false;
 					</Properties>                 
 				</Variable>
 				<Variable Class="CollectionVariable">
-					<Id>1401539997521</Id>
-					<Name><![CDATA[OrderList]]></Name>
-					<X>-340</X><Y>130</Y>
+					<Id>1402633296055</Id>
+					<Name><![CDATA[Supplier_OrderList]]></Name>
+					<X>-620</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13078,7 +13067,7 @@ if (I <= Qmin)	Min_Stock=true; else Min_Stock=false;
 			<Ports>
 				<Port>
 					<Id>1401539997527</Id>
-					<Name><![CDATA[Materials_InPort]]></Name>
+					<Name><![CDATA[Materials_Port]]></Name>
 					<X>-180</X><Y>60</Y>
 					<Label><X>6</X><Y>2</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -13095,49 +13084,17 @@ if (I <= Qmin)	Min_Stock=true; else Min_Stock=false;
 ]]></OnSendAction>
 				</Port>
 				<Port>
-					<Id>1401539997529</Id>
-					<Name><![CDATA[Materials_OutPort]]></Name>
+					<Id>1402508331208</Id>
+					<Name><![CDATA[Information_Port]]></Name>
 					<X>-180</X><Y>80</Y>
 					<Label><X>6</X><Y>2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<IncomingMessageType><![CDATA[Order]]></IncomingMessageType>
-					<OutgoingMessageType><![CDATA[Order]]></OutgoingMessageType>
+					<IncomingMessageType><![CDATA[ArrayList<Order>]]></IncomingMessageType>
+					<OutgoingMessageType><![CDATA[ArrayList<Order>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-				</Port>
-				<Port>
-					<Id>1402508331206</Id>
-					<Name><![CDATA[Information_InPort]]></Name>
-					<X>-180</X><Y>100</Y>
-					<Label><X>6</X><Y>2</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<IncomingMessageType><![CDATA[Order]]></IncomingMessageType>
-					<OutgoingMessageType><![CDATA[Order]]></OutgoingMessageType>
-					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[
-//distributor = get_Baquery().get_Main().distributor.get(msg.IDSource);]]></OnReceiveAction>
-					<OnSendAction><![CDATA[//String Text=("Panaderia:"+ (int) ID +"." + NAME + ": Necesito:" + msg.IDRawMaterial + "unidades del insumo " + (int) msg.Amount);
-//Log.setText(Log.getText() +"\n"+ Text);
-//distributor.OutPort.receive(new OrderRM(ID,4,110));
-]]></OnSendAction>
-				</Port>
-				<Port>
-					<Id>1402508331208</Id>
-					<Name><![CDATA[Information_OutPort]]></Name>
-					<X>-180</X><Y>120</Y>
-					<Label><X>6</X><Y>2</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<IncomingMessageType><![CDATA[Order]]></IncomingMessageType>
-					<OutgoingMessageType><![CDATA[Order]]></OutgoingMessageType>
-					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[System.out.println("Actor: "+msg.Source_type+" Necesita: "+msg.Amount+ " unidades PAN del insumo: "+ msg.Stock_type);
-OrderList.add(msg);
-Demand=msg.Amount;]]></OnReceiveAction>
+					<OnSendAction><![CDATA[System.out.println("Cantidad:"+msg.get(0).Amount);]]></OnSendAction>
 				</Port>
 			</Ports>
 			<StatechartElements>
@@ -13145,7 +13102,7 @@ Demand=msg.Amount;]]></OnReceiveAction>
 					<Id>1401534009211</Id>
 					<Name><![CDATA[Cerrado]]></Name>
 					<Description><![CDATA[No hay Atencion]]></Description> 
-					<X>-830</X><Y>360</Y>
+					<X>-830</X><Y>420</Y>
 					<Label><X>35</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13177,7 +13134,7 @@ State=Actor.State.ACTIVE
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1401534009213</Id>
 					<Name><![CDATA[Abierto]]></Name>
-					<X>-830</X><Y>440</Y>
+					<X>-830</X><Y>500</Y>
 					<Label><X>35</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13194,7 +13151,7 @@ State=Actor.State.ACTIVE
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1402492965700</Id>
 					<Name><![CDATA[Revisar_Inventario]]></Name>
-					<X>-830</X><Y>510</Y>
+					<X>-830</X><Y>570</Y>
 					<Label><X>10</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13209,7 +13166,7 @@ aRevisar_Inventario();]]></EntryAction>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1402494734504</Id>
 					<Name><![CDATA[Wait_Request]]></Name>
-					<X>-830</X><Y>580</Y>
+					<X>-830</X><Y>640</Y>
 					<Label><X>10</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13221,7 +13178,7 @@ aRevisar_Inventario();]]></EntryAction>
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
 					<Id>1401534009215</Id>
 					<Name><![CDATA[StateChart]]></Name>
-					<X>-780</X><Y>320</Y>
+					<X>-780</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13236,7 +13193,7 @@ aRevisar_Inventario();]]></EntryAction>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1401534009217</Id>
 					<Name><![CDATA[transition]]></Name>
-					<X>-790</X><Y>390</Y>
+					<X>-790</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13260,7 +13217,7 @@ aRevisar_Inventario();]]></EntryAction>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1401534009219</Id>
 					<Name><![CDATA[transition2]]></Name>
-					<X>-730</X><Y>590</Y>
+					<X>-730</X><Y>650</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13286,7 +13243,7 @@ aRevisar_Inventario();]]></EntryAction>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1402494579351</Id>
 					<Name><![CDATA[transition1]]></Name>
-					<X>-790</X><Y>470</Y>
+					<X>-790</X><Y>530</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13307,9 +13264,9 @@ aRevisar_Inventario();]]></EntryAction>
 					</Properties>	
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1402494766801</Id>
-					<Name><![CDATA[transition3]]></Name>
-					<X>-790</X><Y>540</Y>
+					<Id>1402542034769</Id>
+					<Name><![CDATA[transition4]]></Name>
+					<X>-790</X><Y>600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13334,25 +13291,63 @@ aRevisar_Inventario();]]></EntryAction>
 				<ActionChartElement Class="ActionChart">
 					<Id>1402494483457</Id>
 					<Name><![CDATA[aRevisar_Inventario]]></Name>
-					<X>-420</X><Y>350</Y>
+					<X>-420</X><Y>410</Y>
 					<Label><X>-60</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties AccessType="default" StaticFunction="false" Width="180" Height="20" Next="1402494483468" >
+					<Properties AccessType="default" StaticFunction="false" Width="180" Height="20" Next="1402541898063" >
 						<FillColor>-726163</FillColor>
 					<ReturnType><![CDATA[void]]></ReturnType>
 					</Properties>
 				</ActionChartElement>
+				<ActionChartElement Class="Decision">
+					<Id>1402541898065</Id>
+					<Name><![CDATA[decision1]]></Name>
+					<X>-420</X><Y>960</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Es necesario hacer un pedido?]]></Comment>
+					<Properties Width="200" Height="80" Appearance="0" Previous="1402494483468" Next="1402494483481" TrueAction="1402541898106" >
+						<FillColor/>
+						<Condition><![CDATA[request>=(int)200]]></Condition>
+					</Properties>
+				</ActionChartElement>
+				<ActionChartElement Class="Return">
+					<Id>1402494483481</Id>
+					<Name><![CDATA[returnStatement]]></Name>
+					<X>-420</X><Y>1100</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="80" Height="20" Previous="1402541898065" >
+						<FillColor>-726163</FillColor>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="LocalVariable">
+					<Id>1402541898063</Id>
+					<Name><![CDATA[request]]></Name>
+					<X>-420</X><Y>460</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Pedido Acumulado]]></Comment>
+					<Properties Width="160" Height="30" Constant="false" Previous="1402494483457" Next="1402494483468" >
+						<FillColor/>
+						<Type><![CDATA[int]]></Type>
+						<InitialValue><![CDATA[0]]></InitialValue>
+					</Properties>	
+				</ActionChartElement>
 				<ActionChartElement Class="ForLoop">
 					<Id>1402494483468</Id>
 					<Name><![CDATA[forLoop]]></Name>
-					<X>-420</X><Y>400</Y>
+					<X>-420</X><Y>510</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Comment><![CDATA[Para cada materia prima, haga:]]></Comment>
-					<Properties CollectionIterator="false" Width="160" Height="30" Previous="1402494483457" Next="1402494483481" BodyAction="1402494483470" >
+					<Properties CollectionIterator="false" Width="160" Height="30" Previous="1402541898063" Next="1402541898065" BodyAction="1402494483470" >
 						<FillColor/>
 
 						<Initializer><![CDATA[int i = 0]]></Initializer>
@@ -13363,7 +13358,7 @@ aRevisar_Inventario();]]></EntryAction>
 				<ActionChartElement Class="LocalVariable">
 					<Id>1402494483470</Id>
 					<Name><![CDATA[Current_Stock]]></Name>
-					<X>-420</X><Y>450</Y>
+					<X>-420</X><Y>560</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -13376,8 +13371,8 @@ aRevisar_Inventario();]]></EntryAction>
 				</ActionChartElement>
 				<ActionChartElement Class="LocalVariable">
 					<Id>1402494483471</Id>
-					<Name><![CDATA[Request]]></Name>
-					<X>-420</X><Y>500</Y>
+					<Name><![CDATA[order]]></Name>
+					<X>-420</X><Y>610</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -13391,7 +13386,7 @@ aRevisar_Inventario();]]></EntryAction>
 				<ActionChartElement Class="Decision">
 					<Id>1402494483473</Id>
 					<Name><![CDATA[decision]]></Name>
-					<X>-420</X><Y>550</Y>
+					<X>-420</X><Y>660</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -13402,58 +13397,49 @@ aRevisar_Inventario();]]></EntryAction>
 					</Properties>
 				</ActionChartElement>
 				<ActionChartElement Class="Code">
-					<Id>1402509176723</Id>
-					<Name><![CDATA[code]]></Name>
-					<X>-520</X><Y>710</Y>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Comment><![CDATA[Incrementar el stock de ordenes]]></Comment>
-					<Properties Width="100" Height="80" Previous="1402494483476" Next="1402494483479" >
-						<FillColor/>
-						<Code><![CDATA[Supply.get(i).orders=(int)Request;]]></Code>
-					</Properties>	
-				</ActionChartElement>
-				<ActionChartElement Class="Code">
-					<Id>1402494483479</Id>
-					<Name><![CDATA[code2]]></Name>
-					<X>-520</X><Y>810</Y>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Comment><![CDATA[Enviar orden de compra]]></Comment>
-					<Properties Width="100" Height="30" Previous="1402509176723" >
-						<FillColor/>
-						<Code><![CDATA[//SendMessage(false);
-Information_OutPort.receive(new Order(TYPE,0,Inventory.Type.RESOURCE,i,Request));
-//communicator.Create_Entity("Order",GLinkB_ABS,false,new OrderRM(OrderRM.TypeAgent.SPL_BAQUERY,(int)ID,(int)RawMaterials.get(i).ID,Orden));
-System.out.println("Inventary PT:"+i);
-//InPort.send(new OrderRM((int)1,(int)RawMaterials.get(i).ID,Orden));
-Supply.get(i).IEsperado+=Request;]]></Code>
-					</Properties>	
-				</ActionChartElement>
-				<ActionChartElement Class="Code">
 					<Id>1402494483476</Id>
 					<Name><![CDATA[code1]]></Name>
-					<X>-520</X><Y>610</Y>
+					<X>-520</X><Y>720</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Comment><![CDATA[Cuanto debo pedir?]]></Comment>
 					<Properties Width="100" Height="80" Previous="1402494483473" Next="1402509176723" >
 						<FillColor/>
-						<Code><![CDATA[Request=(int)Supply.get(i).Q-Current_Stock;]]></Code>
+						<Code><![CDATA[order=(int)Supply.get(i).Q-Current_Stock;]]></Code>
 					</Properties>	
 				</ActionChartElement>
-				<ActionChartElement Class="Return">
-					<Id>1402494483481</Id>
-					<Name><![CDATA[returnStatement]]></Name>
-					<X>-420</X><Y>900</Y>
+				<ActionChartElement Class="Code">
+					<Id>1402509176723</Id>
+					<Name><![CDATA[code]]></Name>
+					<X>-520</X><Y>820</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties Width="80" Height="20" Previous="1402494483468" >
-						<FillColor>-726163</FillColor>
+					<Comment><![CDATA[Incrementar el stock de ordenes]]></Comment>
+					<Properties Width="100" Height="80" Previous="1402494483476" >
+						<FillColor/>
+						<Code><![CDATA[Supply.get(i).IEsperado+=(int)order;
+request+=(int)order;
+Supplier_OrderList.add(new Order(TYPE,Back.ID,Inventory.Type.RESOURCE,i,(int)order));]]></Code>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Code">
+					<Id>1402541898106</Id>
+					<Name><![CDATA[code5]]></Name>
+					<X>-300</X><Y>1030</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Enviar orden de compra]]></Comment>
+					<Properties Width="100" Height="30" Previous="1402541898065" >
+						<FillColor/>
+						<Code><![CDATA[//SendMessage(false);
+Information_Port.send(Supplier_OrderList);
+//communicator.Create_Entity("Order",GLinkB_ABS,false,new OrderRM(OrderRM.TypeAgent.SPL_BAQUERY,(int)ID,(int)RawMaterials.get(i).ID,Orden));
+//System.out.println("Inventary PT:"+i);
+//InPort.send(new OrderRM((int)1,(int)RawMaterials.get(i).ID,Orden));
+//Supply.get(i).IEsperado+=Request;]]></Code>
 					</Properties>	
 				</ActionChartElement>
 			</ActionChartElements>
@@ -13467,34 +13453,8 @@ Supply.get(i).IEsperado+=Request;]]></Code>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[Client_Creator(Main.DBSimulator);
-Supply_Creator(Main.DBSimulator,Inventory.Type.RESOURCE);]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnType><![CDATA[void]]></ReturnType>
-					<Id>1402448284620</Id>
-					<Name><![CDATA[Client_Creator]]></Name>
-					<X>-810</X><Y>240</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[DBFile]]></Name>
-						<Type><![CDATA[ExcelFile]]></Type>
-					</Parameter>
-					<Body><![CDATA[String Token = "Panaderia";
-int NAgents = 1;
-int Header =3;
-int ID = (int)Back.ID;
-	AClient NewAgent=null;
-	double ArrivalRate =	DBFile.getCellNumericValue(  Token +" ("+(int)ID+")", 1+Header, 8 );	
-	double Mean =	DBFile.getCellNumericValue(  Token +" ("+(int)ID+")", 1+Header, 9 );
-	double StandartDeviation =	DBFile.getCellNumericValue(  Token +" ("+(int)ID+")", 1+Header, 10 );	
-	NewAgent= add_Client(ArrivalRate,Mean,StandartDeviation);
-	Client.get(0).Dashboard.setY(ID*210);
-	Main.EstadisticasDashboard.add(Client.get(0).Dashboard);
-]]></Body>
+					<Body><![CDATA[Supply_Creator(Main.DBSimulator,Inventory.Type.RESOURCE);
+ChooserDistributor();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[void]]></ReturnType>
@@ -13557,38 +13517,27 @@ for( int j=1+Header; j<=NRM; j++ ) {
 //UpdateDialog(DialogWindow.sliders,DialogWindow.texts,(int)rawMaterial.get(0).Qmin);
 //UpdateDialog(DialogWindow.sliderQI,DialogWindow.textQI,(int)rawMaterial.get(0).QI);]]></Body>
 				</Function>
-			</Functions>
-			<EmbeddedObjects>
-				<EmbeddedObject>
-					<Id>1402448284628</Id>
-					<Name><![CDATA[Client]]></Name>
-					<X>-830</X><Y>200</Y>
-					<Label><X>15</X><Y>0</Y></Label>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1402643500908</Id>
+					<Name><![CDATA[ChooserDistributor]]></Name>
+					<X>-466</X><Y>237</Y>
+					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<ActiveObjectClass>
-						<PackageName><![CDATA[scsimulator]]></PackageName>
-						<ClassName><![CDATA[AClient]]></ClassName>
-					</ActiveObjectClass>
-					<GenericParametersSubstitute><![CDATA[]]></GenericParametersSubstitute>
-					<Parameters>
-						<Parameter>
-							<Name><![CDATA[ArrivalRate]]></Name>
-							<Value><![CDATA[]]></Value>	
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[Mean]]></Name>
-							<Value><![CDATA[]]></Value>	
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[StandardDeviation]]></Name>
-							<Value><![CDATA[]]></Value>	
-						</Parameter>
-					</Parameters>
-					<Replication><![CDATA[0]]></Replication>	
-					<CollectionType>ARRAY_LIST_BASED</CollectionType>
-				</EmbeddedObject>
+					<Body><![CDATA[//choose the nearest distributor that produces the product
+double dist = +infinity;
+for( ADistributor p : Main.A2 ) {
+	if( Main.DistanceBetween(p.X,p.Y,Back.X,Back.Y) < dist ) {
+	    System.out.println("distanciaMin:"+Main.DistanceBetween(p.X,p.Y,Back.X,Back.Y));
+		distributor = p;
+		dist = Main.DistanceBetween(p.X,p.Y,Back.X,Back.Y);
+	}
+}]]></Body>
+				</Function>
+			</Functions>
+			<EmbeddedObjects>
 				<EmbeddedObject>
 					<Id>1402448284632</Id>
 					<Name><![CDATA[Supply]]></Name>
@@ -14104,7 +14053,7 @@ for( int j=1+Header; j<=NRM; j++ ) {
 					<Id>1401534009157</Id>
 					<Name><![CDATA[line10]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-850</X><Y>300</Y>
+					<X>-850</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14131,7 +14080,7 @@ for( int j=1+Header; j<=NRM; j++ ) {
 					<Id>1401534009159</Id>
 					<Name><![CDATA[text19]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-845</X><Y>285</Y>
+					<X>-845</X><Y>345</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14195,57 +14144,6 @@ for( int j=1+Header; j<=NRM; j++ ) {
 					<Rotation>0.0</Rotation>
 					<Color>-9404272</Color>
 					<Text><![CDATA[Ports]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>11</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Line>
-					<Id>1401539997516</Id>
-					<Name><![CDATA[line21]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-350</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AsObject>false</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Lock>false</Lock>
-					<ShowIn3D>false</ShowIn3D>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-9404272</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>70</Dx>
-					<Dy>0</Dy>
-					<Dz>0</Dz>
-				</Line>
-				<Text>
-					<Id>1401539997519</Id>
-					<Name><![CDATA[text15]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-350</X><Y>110</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AsObject>false</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Lock>false</Lock>
-					<ShowIn3D>false</ShowIn3D>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-9404272</Color>
-					<Text><![CDATA[List]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>11</Size>
@@ -15271,57 +15169,6 @@ for( int j=1+Header; j<=NRM; j++ ) {
 			</Shapes>
 				</Group>
 				<Line>
-					<Id>1402448284602</Id>
-					<Name><![CDATA[line13]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-825</X><Y>225</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AsObject>false</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Lock>false</Lock>
-					<ShowIn3D>false</ShowIn3D>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-9404272</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>140</Dx>
-					<Dy>0</Dy>
-					<Dz>0</Dz>
-				</Line>
-				<Text>
-					<Id>1402448284610</Id>
-					<Name><![CDATA[text20]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-820</X><Y>210</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AsObject>false</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Lock>false</Lock>
-					<ShowIn3D>false</ShowIn3D>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-9404272</Color>
-					<Text><![CDATA[Functions]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>11</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Line>
 					<Id>1402448284614</Id>
 					<Name><![CDATA[line14]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
@@ -15365,6 +15212,57 @@ for( int j=1+Header; j<=NRM; j++ ) {
 					<Rotation>0.0</Rotation>
 					<Color>-9404272</Color>
 					<Text><![CDATA[Functions]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Line>
+					<Id>1402633296050</Id>
+					<Name><![CDATA[line22]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-630</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AsObject>false</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Lock>false</Lock>
+					<ShowIn3D>false</ShowIn3D>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-9404272</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>70</Dx>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Text>
+					<Id>1402633296053</Id>
+					<Name><![CDATA[text16]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-630</X><Y>260</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AsObject>false</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Lock>false</Lock>
+					<ShowIn3D>false</ShowIn3D>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-9404272</Color>
+					<Text><![CDATA[List]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>11</Size>
@@ -15439,7 +15337,7 @@ for( int j=1+Header; j<=NRM; j++ ) {
 				<Variable Class="PlainVariable">
 					<Id>1401540413194</Id>
 					<Name><![CDATA[State]]></Name>
-					<X>-640</X><Y>320</Y>
+					<X>-640</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15463,18 +15361,6 @@ for( int j=1+Header; j<=NRM; j++ ) {
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1401540413202</Id>
-					<Name><![CDATA[Demand]]></Name>
-					<X>-180</X><Y>160</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1401766307295</Id>
 					<Name><![CDATA[TYPE]]></Name>
 					<X>-820</X><Y>70</Y>
@@ -15485,6 +15371,78 @@ for( int j=1+Header; j<=NRM; j++ ) {
 					<Properties SaveInSnapshot="true" Constant="true" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[Actor.Type]]></Type>        
 						<InitialValue><![CDATA[Actor.Type.MANUNFACTURER_PRD]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1402638383654</Id>
+					<Name><![CDATA[Demand]]></Name>
+					<X>-810</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1402639515088</Id>
+					<Name><![CDATA[DemandaInstisfecha]]></Name>
+					<X>-810</X><Y>340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1402639515091</Id>
+					<Name><![CDATA[DemandaTotal]]></Name>
+					<X>-810</X><Y>320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1402641310488</Id>
+					<Name><![CDATA[PRDInstisfecha]]></Name>
+					<X>-500</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1402641310490</Id>
+					<Name><![CDATA[PRDTotal]]></Name>
+					<X>-500</X><Y>290</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1402642514939</Id>
+					<Name><![CDATA[TMPHour]]></Name>
+					<X>-640</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -15677,9 +15635,9 @@ for( int j=1+Header; j<=NRM; j++ ) {
 					</Properties>                 
 				</Variable>
 				<Variable Class="CollectionVariable">
-					<Id>1401540413187</Id>
-					<Name><![CDATA[OrderList]]></Name>
-					<X>-180</X><Y>140</Y>
+					<Id>1402638383650</Id>
+					<Name><![CDATA[Client_OrderList]]></Name>
+					<X>-810</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15694,9 +15652,9 @@ for( int j=1+Header; j<=NRM; j++ ) {
 			</Variables>
 			<Ports>
 				<Port>
-					<Id>1401540413239</Id>
-					<Name><![CDATA[InPort]]></Name>
-					<X>-180</X><Y>60</Y>
+					<Id>1402638429322</Id>
+					<Name><![CDATA[Materials_Port]]></Name>
+					<X>-170</X><Y>55</Y>
 					<Label><X>6</X><Y>2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -15712,27 +15670,84 @@ for( int j=1+Header; j<=NRM; j++ ) {
 ]]></OnSendAction>
 				</Port>
 				<Port>
-					<Id>1401540413241</Id>
-					<Name><![CDATA[OutPort]]></Name>
-					<X>-180</X><Y>80</Y>
+					<Id>1402638429328</Id>
+					<Name><![CDATA[Information_Port]]></Name>
+					<X>-170</X><Y>75</Y>
 					<Label><X>6</X><Y>2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<IncomingMessageType><![CDATA[Order]]></IncomingMessageType>
-					<OutgoingMessageType><![CDATA[Order]]></OutgoingMessageType>
+					<OutgoingMessageType><![CDATA[ArrayList<Order>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[System.out.println("Actor: "+msg.Source_type+" Necesita: "+msg.Amount+ " unidades PAN del insumo: "+ msg.Stock_type);
-OrderList.add(msg);
-Demand=msg.Amount;]]></OnReceiveAction>
+					<OnReceiveAction><![CDATA[Client_OrderList.add(msg);
+Demand=msg.Amount;
+DemandaTotal+=Demand;
+//if(State==Actor.State.ACTIVE){
+	SuplirDemanda();
+//}]]></OnReceiveAction>
+					<OnSendAction><![CDATA[System.out.println("Cantidad:"+msg.get(0).Amount);]]></OnSendAction>
 				</Port>
 			</Ports>
+			<Connectors>
+				<Connector>
+					<Id>1402642185779</Id>
+					<Name><![CDATA[connector]]></Name>
+					<X>-450</X><Y>1020</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObject>1402642185762</SourceEmbeddedObject>
+					<SourceConnectableName>out</SourceConnectableName>
+					<TargetEmbeddedObject>1402642185774</TargetEmbeddedObject>
+					<TargetConnectableName>in</TargetConnectableName>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1402642185781</Id>
+					<Name><![CDATA[connector1]]></Name>
+					<X>-360</X><Y>1020</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObject>1402642185774</SourceEmbeddedObject>
+					<SourceConnectableName>out</SourceConnectableName>
+					<TargetEmbeddedObject>1402642185767</TargetEmbeddedObject>
+					<TargetConnectableName>in</TargetConnectableName>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1402642185783</Id>
+					<Name><![CDATA[connector2]]></Name>
+					<X>-270</X><Y>1020</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObject>1402642185767</SourceEmbeddedObject>
+					<SourceConnectableName>out</SourceConnectableName>
+					<TargetEmbeddedObject>1402642185771</TargetEmbeddedObject>
+					<TargetConnectableName>in</TargetConnectableName>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>30</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+			</Connectors>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1401540413229</Id>
 					<Name><![CDATA[Cerrado]]></Name>
 					<Description><![CDATA[No hay Atencion]]></Description> 
-					<X>-830</X><Y>360</Y>
+					<X>-830</X><Y>440</Y>
 					<Label><X>35</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15764,7 +15779,7 @@ State=Actor.State.ACTIVE
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1401540413231</Id>
 					<Name><![CDATA[Abierto]]></Name>
-					<X>-830</X><Y>430</Y>
+					<X>-830</X><Y>510</Y>
 					<Label><X>35</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15778,10 +15793,36 @@ State=Actor.State.ACTIVE
 						<FillColor>-6107734</FillColor>
 					</Properties>
 				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1402642483947</Id>
+					<Name><![CDATA[Produciendo]]></Name>
+					<X>-830</X><Y>590</Y>
+					<Label><X>15</X><Y>15</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="120" Height="30">
+						<EntryAction><![CDATA[TMPHour=Main.TimeNow();
+Producir_Lote();]]></EntryAction>
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1402642685138</Id>
+					<Name><![CDATA[Esperando_Producir]]></Name>
+					<X>-830</X><Y>670</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="140" Height="30">
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
 					<Id>1401540413233</Id>
 					<Name><![CDATA[StateChart]]></Name>
-					<X>-780</X><Y>320</Y>
+					<X>-780</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15796,7 +15837,7 @@ State=Actor.State.ACTIVE
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1401540413235</Id>
 					<Name><![CDATA[transition]]></Name>
-					<X>-790</X><Y>390</Y>
+					<X>-790</X><Y>470</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15820,16 +15861,19 @@ State=Actor.State.ACTIVE
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1401540413237</Id>
 					<Name><![CDATA[transition2]]></Name>
-					<X>-740</X><Y>430</Y>
+					<X>-690</X><Y>690</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-40</Y></Point>
+						<Point><X>50</X><Y>0</Y></Point>
+						<Point><X>50</X><Y>-190</Y></Point>
+						<Point><X>-50</X><Y>-190</Y></Point>
+						<Point><X>-50</X><Y>-220</Y></Point>
 					</Points>
-					<Properties Source="1401540413231" Target="1401540413229" Trigger="condition">
+					<Properties Source="1402642685138" Target="1401540413229" Trigger="condition">
 						<Timeout><![CDATA[1]]></Timeout>
 						<Condition><![CDATA[Main.TimeNow()>=HCIERRE]]></Condition>
 						<Rate><![CDATA[1]]></Rate>
@@ -15840,7 +15884,366 @@ State=Actor.State.ACTIVE
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1402642600564</Id>
+					<Name><![CDATA[transition1]]></Name>
+					<X>-790</X><Y>540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>50</Y></Point>
+					</Points>
+					<Properties Source="1401540413231" Target="1402642483947" Trigger="timeout">
+						<Timeout><![CDATA[0]]></Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate><![CDATA[1]]></Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1402642716497</Id>
+					<Name><![CDATA[transition3]]></Name>
+					<X>-790</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>50</Y></Point>
+					</Points>
+					<Properties Source="1402642483947" Target="1402642685138" Trigger="timeout">
+						<Timeout><![CDATA[0]]></Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate><![CDATA[1]]></Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1402642772037</Id>
+					<Name><![CDATA[transition4]]></Name>
+					<X>-830</X><Y>690</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-70</X><Y>0</Y></Point>
+						<Point><X>-70</X><Y>-90</Y></Point>
+						<Point><X>0</X><Y>-90</Y></Point>
+					</Points>
+					<Properties Source="1402642685138" Target="1402642483947" Trigger="condition">
+						<Timeout><![CDATA[1]]></Timeout>
+						<Condition><![CDATA[Main.TimeNow()-TMPHour>=Main.Round((HCIERRE-HAPERTURA)/(double)(Rate-1),3)]]></Condition>
+						<Rate><![CDATA[1]]></Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
 			</StatechartElements>
+			<ActionChartElements>
+				<ActionChartElement Class="ActionChart">
+					<Id>1402639683993</Id>
+					<Name><![CDATA[SuplirDemanda]]></Name>
+					<X>150</X><Y>400</Y>
+					<Label><X>-44</X><Y>12</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties AccessType="default" StaticFunction="false" Width="160" Height="20" Next="1402639683994" >
+						<FillColor>1684313581</FillColor>
+					<ReturnType><![CDATA[void]]></ReturnType>
+					</Properties>
+				</ActionChartElement>
+				<ActionChartElement Class="LocalVariable">
+					<Id>1402639774359</Id>
+					<Name><![CDATA[stock]]></Name>
+					<X>150</X><Y>511</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Mi inventario Actual?]]></Comment>
+					<Properties Width="180" Height="30" Constant="false" Previous="1402639683994" Next="1402639683995" >
+						<FillColor/>
+						<Type><![CDATA[int]]></Type>
+						<InitialValue><![CDATA[(int)Product.get(0).I]]></InitialValue>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Decision">
+					<Id>1402639683995</Id>
+					<Name><![CDATA[decision5]]></Name>
+					<X>150</X><Y>561</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Tengo Producto?]]></Comment>
+					<Properties Width="180" Height="89" Appearance="0" Previous="1402639774359" Next="1402639684005" TrueAction="1402639683996" FalseAction="1402639684003" >
+						<FillColor/>
+						<Condition><![CDATA[stock>0]]></Condition>
+					</Properties>
+				</ActionChartElement>
+				<ActionChartElement Class="Code">
+					<Id>1402639684003</Id>
+					<Name><![CDATA[code8]]></Name>
+					<X>40</X><Y>635</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Demanda Insatisfecha]]></Comment>
+					<Properties Width="100" Height="75" Previous="1402639683995" >
+						<FillColor>1694433280</FillColor>
+						<Code><![CDATA[DemandaInstisfecha+=Demanda;]]></Code>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Decision">
+					<Id>1402639683996</Id>
+					<Name><![CDATA[decision6]]></Name>
+					<X>310</X><Y>635</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Tengo Producto suficientes?]]></Comment>
+					<Properties Width="160" Height="75" Appearance="0" Previous="1402639683995" Next="1402639684002" TrueAction="1402639683997" FalseAction="1402639684000" >
+						<FillColor/>
+						<Condition><![CDATA[stock>=Demanda]]></Condition>
+					</Properties>
+				</ActionChartElement>
+				<ActionChartElement Class="Code">
+					<Id>1402639684000</Id>
+					<Name><![CDATA[code7]]></Name>
+					<X>210</X><Y>702</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Produccion satisfecha parcialmente]]></Comment>
+					<Properties Width="100" Height="68" Previous="1402639683996" >
+						<FillColor>1682342580</FillColor>
+						<Code><![CDATA[DemandaInstisfecha+=Demanda-stock;
+Product.get(0).I=0;]]></Code>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Code">
+					<Id>1402639683997</Id>
+					<Name><![CDATA[code6]]></Name>
+					<X>410</X><Y>702</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Demanda satisfecha completamente]]></Comment>
+					<Properties Width="120" Height="68" Previous="1402639683996" >
+						<FillColor>1872416050</FillColor>
+						<Code><![CDATA[Product.get(0).I-=Demanda;]]></Code>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Code">
+					<Id>1402639684002</Id>
+					<Name><![CDATA[code1]]></Name>
+					<X>310</X><Y>810</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Enviar Orden]]></Comment>
+					<Properties Width="100" Height="30" Previous="1402639683996" >
+						<FillColor/>
+						<Code><![CDATA[//communicator.Create_Entity("Final_Product",GLinkB_PRD,false,new OrderRM(OrderRM.TypeAgent.PRD_BAQUERY,(int)ID,100,Demanda));]]></Code>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Return">
+					<Id>1402639684005</Id>
+					<Name><![CDATA[returnStatement1]]></Name>
+					<X>150</X><Y>880</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="80" Height="20" Previous="1402639683995" >
+						<FillColor>-726163</FillColor>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="LocalVariable">
+					<Id>1402639683994</Id>
+					<Name><![CDATA[Demanda]]></Name>
+					<X>150</X><Y>450</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Cual es la demanda?]]></Comment>
+					<Properties Width="180" Height="41" Constant="false" Previous="1402639683993" Next="1402639774359" >
+						<FillColor/>
+						<Type><![CDATA[int]]></Type>
+						<InitialValue><![CDATA[(int)Demand]]></InitialValue>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="ActionChart">
+					<Id>1402640674705</Id>
+					<Name><![CDATA[Producir_Lote]]></Name>
+					<X>-480</X><Y>400</Y>
+					<Label><X>-44</X><Y>12</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties AccessType="default" StaticFunction="false" Width="120" Height="20" Next="1402640674706" >
+						<FillColor>-726163</FillColor>
+					<ReturnType><![CDATA[void]]></ReturnType>
+					</Properties>
+				</ActionChartElement>
+				<ActionChartElement Class="Decision">
+					<Id>1402640674706</Id>
+					<Name><![CDATA[decision1]]></Name>
+					<X>-480</X><Y>450</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Necesito Producir?]]></Comment>
+					<Properties Width="120" Height="60" Appearance="0" Previous="1402640674705" Next="1402640674722" TrueAction="1402640674708" FalseAction="1402640674719" >
+						<FillColor/>
+						<Condition><![CDATA[Product.get(0).I < Product.get(0).Qmax]]></Condition>
+					</Properties>
+				</ActionChartElement>
+				<ActionChartElement Class="LocalVariable">
+					<Id>1402640674708</Id>
+					<Name><![CDATA[NPanes]]></Name>
+					<X>-330</X><Y>510</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Cuanto debo producir?]]></Comment>
+					<Properties Width="180" Height="41" Constant="false" Previous="1402640674706" Next="1402640674709" >
+						<FillColor/>
+						<Type><![CDATA[double]]></Type>
+						<InitialValue><![CDATA[Lot]]></InitialValue>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="LocalVariable">
+					<Id>1402640674709</Id>
+					<Name><![CDATA[Imin]]></Name>
+					<X>-330</X><Y>571</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Cuanto puedo producir?]]></Comment>
+					<Properties Width="180" Height="49" Constant="false" Previous="1402640674708" Next="1402640674710" >
+						<FillColor/>
+						<Type><![CDATA[double]]></Type>
+						<InitialValue><![CDATA[Imin=+infinity; //Almacena el minimo inventario de todas las materias primas disponibles
+int nRM = Back.PRV.size();
+for(int i=0; i<nRM;i++){
+   if(Back.PRV.get(0).Supply.get(i).I< Imin){
+   	Imin=Back.PRV.get(0).Supply.get(i).I;
+   	System.out.println("Inventario Minimo:" + Imin);
+   }
+}]]></InitialValue>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Decision">
+					<Id>1402640674710</Id>
+					<Name><![CDATA[decision2]]></Name>
+					<X>-330</X><Y>640</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Tengo Insumos?]]></Comment>
+					<Properties Width="140" Height="89" Appearance="0" Previous="1402640674709" TrueAction="1402640674712" FalseAction="1402640674718" >
+						<FillColor/>
+						<Condition><![CDATA[Imin>0]]></Condition>
+					</Properties>
+				</ActionChartElement>
+				<ActionChartElement Class="Decision">
+					<Id>1402640674712</Id>
+					<Name><![CDATA[decision3]]></Name>
+					<X>-170</X><Y>714</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Tengo Insumos suficientes?]]></Comment>
+					<Properties Width="160" Height="75" Appearance="0" Previous="1402640674710" TrueAction="1402640674713" FalseAction="1402640674716" >
+						<FillColor/>
+						<Condition><![CDATA[Imin>=NPanes]]></Condition>
+					</Properties>
+				</ActionChartElement>
+				<ActionChartElement Class="Code">
+					<Id>1402640674713</Id>
+					<Name><![CDATA[code3]]></Name>
+					<X>-70</X><Y>781</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Produccion satisfecha completamente]]></Comment>
+					<Properties Width="120" Height="68" Previous="1402640674712" >
+						<FillColor>1872416050</FillColor>
+						<Code><![CDATA[for(int i=0; i<Back.PRV.get(0).Supply.size();i++) Back.PRV.get(0).Supply.get(i).I-=(int)NPanes;
+ProduceLot.inject((int)NPanes);]]></Code>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Code">
+					<Id>1402640674716</Id>
+					<Name><![CDATA[code4]]></Name>
+					<X>-270</X><Y>781</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Produccion satisfecha parcialmente]]></Comment>
+					<Properties Width="100" Height="68" Previous="1402640674712" >
+						<FillColor>1682342580</FillColor>
+						<Code><![CDATA[for(int i=0; i<Back.PRV.get(0).Supply.size();i++) Back.PRV.get(0).Supply.get(i).I-=(int)Imin;
+ProduceLot.inject((int)Imin);]]></Code>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Code">
+					<Id>1402640674718</Id>
+					<Name><![CDATA[code5]]></Name>
+					<X>-420</X><Y>714</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Produccion Insatisfecha]]></Comment>
+					<Properties Width="100" Height="75" Previous="1402640674710" >
+						<FillColor>1694433280</FillColor>
+						<Code><![CDATA[//System.out.println("NO hay insumos suficientes");
+PRDInstisfecha=+Lot;
+Back.PRV.get(0).aRevisar_Inventario();]]></Code>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Code">
+					<Id>1402640674719</Id>
+					<Name><![CDATA[code]]></Name>
+					<X>-560</X><Y>510</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Stock al Maximo "No es necesario producir"]]></Comment>
+					<Properties Width="80" Height="120" Previous="1402640674706" >
+						<FillColor/>
+						<Code><![CDATA[Product.get(0).Max_Stock=true;
+//Producing=false;]]></Code>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Return">
+					<Id>1402640674722</Id>
+					<Name><![CDATA[returnStatement]]></Name>
+					<X>-480</X><Y>929</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="80" Height="20" Previous="1402640674706" >
+						<FillColor>-726163</FillColor>
+					</Properties>	
+				</ActionChartElement>
+			</ActionChartElements>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[void]]></ReturnType>
@@ -15853,13 +16256,14 @@ State=Actor.State.ACTIVE
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//Client_Creator(Main.DBSimulator);
 //Supply_Creator(Main.DBSimulator,Inventory.TypeInventory.RESOURCE);
+Client_Creator(Main.DBSimulator);
 Productor_Creator(Main.DBSimulator,Inventory.Type.PRODUCT);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[void]]></ReturnType>
 					<Id>1401767928427</Id>
 					<Name><![CDATA[Productor_Creator]]></Name>
-					<X>-820</X><Y>240</Y>
+					<X>-500</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15903,12 +16307,38 @@ int j=1+Header;
 //}	
 ]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1402638383652</Id>
+					<Name><![CDATA[Client_Creator]]></Name>
+					<X>-810</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[DBFile]]></Name>
+						<Type><![CDATA[ExcelFile]]></Type>
+					</Parameter>
+					<Body><![CDATA[String Token = "Panaderia";
+int NAgents = 1;
+int Header =3;
+int ID = (int)Back.ID;
+	AClient NewAgent=null;
+	double ArrivalRate =	DBFile.getCellNumericValue(  Token +" ("+(int)ID+")", 1+Header, 8 );	
+	double Mean =	DBFile.getCellNumericValue(  Token +" ("+(int)ID+")", 1+Header, 9 );
+	double StandartDeviation =	DBFile.getCellNumericValue(  Token +" ("+(int)ID+")", 1+Header, 10 );	
+	NewAgent= add_Client(ArrivalRate,Mean,StandartDeviation);
+	Client.get(0).Dashboard.setY(ID*210);
+	Main.EstadisticasDashboard.add(Client.get(0).Dashboard);
+]]></Body>
+				</Function>
 			</Functions>
 			<EmbeddedObjects>
 				<EmbeddedObject>
 					<Id>1401767928429</Id>
 					<Name><![CDATA[Product]]></Name>
-					<X>-830</X><Y>200</Y>
+					<X>-510</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15963,13 +16393,292 @@ int j=1+Header;
 					<Replication><![CDATA[0]]></Replication>	
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1402638383656</Id>
+					<Name><![CDATA[Client]]></Name>
+					<X>-830</X><Y>200</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[scsimulator]]></PackageName>
+						<ClassName><![CDATA[AClient]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParametersSubstitute><![CDATA[]]></GenericParametersSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[ArrivalRate]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[Mean]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[StandardDeviation]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+					</Parameters>
+					<Replication><![CDATA[0]]></Replication>	
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1402642185762</Id>
+					<Name><![CDATA[ProduceLot]]></Name>
+					<X>-490</X><Y>1010</Y>
+					<Label><X>-30</X><Y>-15</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.xj.anylogic.libraries.enterprise]]></PackageName>
+						<ClassName><![CDATA[Source]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParametersSubstitute><![CDATA[Entity]]></GenericParametersSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[newEntity]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[interarrivalTime]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[arrivalType]]></Name>
+							<Value><![CDATA[Source.MANUAL]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rate]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rateTable]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[arrivalTable]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[entitiesPerArrival]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[limitArrivals]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maxArrivals]]></Name>
+							<Value><![CDATA[1]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[entityShape]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[uniqueShape]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[enableRotation]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[enableVerticalRotation]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rateSchedule]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[arrivalSchedule]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[modifyRate]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rateExpression]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+					</Parameters>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1402642185767</Id>
+					<Name><![CDATA[process]]></Name>
+					<X>-320</X><Y>1000</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.xj.anylogic.libraries.enterprise]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParametersSubstitute><![CDATA[Entity]]></GenericParametersSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[capacity]]></Name>
+							<Value><![CDATA[(int)Lot]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[animationGuide]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[animationType]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayTime]]></Name>
+							<Value><![CDATA[Speed*minute()]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayTimeDefinedByPath]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[speed]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[animationForward]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[enableStats]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+					</Parameters>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1402642185771</Id>
+					<Name><![CDATA[sink]]></Name>
+					<X>-240</X><Y>1010</Y>
+					<Label><X>0</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.xj.anylogic.libraries.enterprise]]></PackageName>
+						<ClassName><![CDATA[Sink]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParametersSubstitute><![CDATA[Entity]]></GenericParametersSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+							<Value><![CDATA[Product.get(0).I += 1;
+PRDTotal+=1;]]></Value>	
+						</Parameter>
+					</Parameters>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1402642185774</Id>
+					<Name><![CDATA[Cola]]></Name>
+					<X>-410</X><Y>990</Y>
+					<Label><X>-10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.xj.anylogic.libraries.enterprise]]></PackageName>
+						<ClassName><![CDATA[Queue]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParametersSubstitute><![CDATA[Entity]]></GenericParametersSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[capacity]]></Name>
+							<Value><![CDATA[(int)Lot]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onAtExit]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[enableTimeout]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[timeout]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExitTimeout]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[enablePreemption]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[priority]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExitPreempted]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[animationGuide]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[animationType]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[animationForward]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[enableStats]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+					</Parameters>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+				</EmbeddedObject>
 			</EmbeddedObjects>
 
 			<Shapes>
 				<Group>
 					<Id>1401540413028</Id>
 					<Name><![CDATA[Icon2D]]></Name>
-					<X>0</X><Y>40</Y>
+					<X>10</X><Y>-170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16114,7 +16823,7 @@ int j=1+Header;
 					<Id>1401540413088</Id>
 					<Name><![CDATA[line10]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-850</X><Y>300</Y>
+					<X>-850</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16141,7 +16850,7 @@ int j=1+Header;
 					<Id>1401540413090</Id>
 					<Name><![CDATA[text19]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-845</X><Y>285</Y>
+					<X>-845</X><Y>365</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16154,108 +16863,6 @@ int j=1+Header;
 					<Rotation>0.0</Rotation>
 					<Color>-9404272</Color>
 					<Text><![CDATA[StateChart]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>11</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Line>
-					<Id>1401540413094</Id>
-					<Name><![CDATA[line20]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-190</X><Y>50</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AsObject>false</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Lock>false</Lock>
-					<ShowIn3D>false</ShowIn3D>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-9404272</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>70</Dx>
-					<Dy>0</Dy>
-					<Dz>0</Dz>
-				</Line>
-				<Text>
-					<Id>1401540413096</Id>
-					<Name><![CDATA[text14]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-190</X><Y>35</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AsObject>false</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Lock>false</Lock>
-					<ShowIn3D>false</ShowIn3D>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-9404272</Color>
-					<Text><![CDATA[Ports]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>11</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Line>
-					<Id>1401540413099</Id>
-					<Name><![CDATA[line21]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-190</X><Y>130</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AsObject>false</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Lock>false</Lock>
-					<ShowIn3D>false</ShowIn3D>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-9404272</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>70</Dx>
-					<Dy>0</Dy>
-					<Dz>0</Dz>
-				</Line>
-				<Text>
-					<Id>1401540413101</Id>
-					<Name><![CDATA[text15]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-190</X><Y>115</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AsObject>false</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Lock>false</Lock>
-					<ShowIn3D>false</ShowIn3D>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-9404272</Color>
-					<Text><![CDATA[List]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>11</Size>
@@ -17590,7 +18197,7 @@ int j=1+Header;
 					<Id>1401767928423</Id>
 					<Name><![CDATA[line14]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-835</X><Y>225</Y>
+					<X>-515</X><Y>225</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17617,7 +18224,7 @@ int j=1+Header;
 					<Id>1401767928425</Id>
 					<Name><![CDATA[text21]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-830</X><Y>210</Y>
+					<X>-510</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17688,6 +18295,210 @@ int j=1+Header;
 					<Dy>0</Dy>
 					<Dz>0</Dz>
 				</Line>
+				<Line>
+					<Id>1402638383640</Id>
+					<Name><![CDATA[line23]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-820</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AsObject>false</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Lock>false</Lock>
+					<ShowIn3D>false</ShowIn3D>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-9404272</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>70</Dx>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Text>
+					<Id>1402638383643</Id>
+					<Name><![CDATA[text16]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-819</X><Y>254</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AsObject>false</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Lock>false</Lock>
+					<ShowIn3D>false</ShowIn3D>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-9404272</Color>
+					<Text><![CDATA[Demand]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Line>
+					<Id>1402638383646</Id>
+					<Name><![CDATA[line13]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-825</X><Y>225</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AsObject>false</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Lock>false</Lock>
+					<ShowIn3D>false</ShowIn3D>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-9404272</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>140</Dx>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Text>
+					<Id>1402638383648</Id>
+					<Name><![CDATA[text20]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-820</X><Y>210</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AsObject>false</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Lock>false</Lock>
+					<ShowIn3D>false</ShowIn3D>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-9404272</Color>
+					<Text><![CDATA[Functions]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Line>
+					<Id>1402638429318</Id>
+					<Name><![CDATA[line20]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-180</X><Y>45</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AsObject>false</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Lock>false</Lock>
+					<ShowIn3D>false</ShowIn3D>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-9404272</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>70</Dx>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Text>
+					<Id>1402638429320</Id>
+					<Name><![CDATA[text14]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-180</X><Y>30</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AsObject>false</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Lock>false</Lock>
+					<ShowIn3D>false</ShowIn3D>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-9404272</Color>
+					<Text><![CDATA[Ports]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Line>
+					<Id>1402641310484</Id>
+					<Name><![CDATA[line24]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-510</X><Y>271</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AsObject>false</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Lock>false</Lock>
+					<ShowIn3D>false</ShowIn3D>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-9404272</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>70</Dx>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Text>
+					<Id>1402641310486</Id>
+					<Name><![CDATA[text17]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-509</X><Y>255</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AsObject>false</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Lock>false</Lock>
+					<ShowIn3D>false</ShowIn3D>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-9404272</Color>
+					<Text><![CDATA[Production]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
 			<Areas>
 				<Area>
@@ -18065,7 +18876,7 @@ InitialConfiguration();]]></StartupCode>
 					<OnReceiveAction><![CDATA[/*System.out.println("Actor: "+msg.Source_type+" Necesita: "+msg.Amount+ " unidades PAN del insumo: "+ msg.Stock_type);
 OrderList.add(msg);
 Demand=msg.Amount;*/
-PRD.get(0).OutPort.receive(msg);
+//PRD.get(0).OutPort.receive(msg);
 ]]></OnReceiveAction>
 				</Port>
 			</Ports>
