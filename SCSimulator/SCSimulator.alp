@@ -21544,9 +21544,9 @@ PRDTotal+=1;]]></Value>
 System.out.println("Actor:"+msg.get(i).Source_type+":"+msg.get(i).Source_id+"Demanda:"+Demand);
 }
 
-//if(State==Actor.State.ACTIVE){
-    //SuplirDemanda();
-//}]]></OnReceiveAction>
+if(State==Actor.State.ACTIVE){
+    SuplirDemanda();
+}]]></OnReceiveAction>
 					<OnSendAction><![CDATA[System.out.println("Cantidad:"+msg.get(0).Amount);]]></OnSendAction>
 				</Port>
 			</Ports>
