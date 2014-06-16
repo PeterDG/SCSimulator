@@ -16,6 +16,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="Commander">
+    <leftPanel />
+    <rightPanel />
+    <splitter proportion="0.5" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -70,73 +75,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="IOverlay.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/anylogic/tilemaplib/IOverlay.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="425">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PointOverlay.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/anylogic/tilemaplib/PointOverlay.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="23" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1989">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TileImageProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileImageProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="184" column="30" selection-start="7529" selection-end="7529" vertical-scroll-proportion="0.0" vertical-offset="3128" max-vertical-offset="7208">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TileGIS.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileGIS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="233" column="0" selection-start="8889" selection-end="8889" vertical-scroll-proportion="-0.35533553" vertical-offset="3961" max-vertical-offset="8976">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="library.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/library.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="230" column="39" selection-start="8372" selection-end="8376" vertical-scroll-proportion="0.0" vertical-offset="3910" max-vertical-offset="9945">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TileGISLibrary.iml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TileGISLibrary.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="357">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TileMapPanel.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TileMapPanel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileMapPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="248" column="16" selection-start="8435" selection-end="8435" vertical-scroll-proportion="0.0" vertical-offset="4216" max-vertical-offset="9418">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TileSourceSelector.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileSourceSelector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="28" selection-start="1684" selection-end="1684" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="4658">
+            <state line="533" column="25" selection-start="20711" selection-end="20711" vertical-scroll-proportion="1.2527076" vertical-offset="8078" max-vertical-offset="9129">
               <folding />
             </state>
           </provider>
@@ -154,7 +96,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/anylogic/tilemaplib/MercatorProj.java" />
         <option value="$PROJECT_DIR$/src/com/anylogic/tilemaplib/ShapeTileMap.java" />
-        <option value="$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileSourceSelector.java" />
         <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/com/xj/anylogic/engine/presentation/UtilitiesColor.java" />
         <option value="$PROJECT_DIR$/src/com/xj/anylogic/engine/internal/Presentable.java" />
@@ -176,16 +117,17 @@
         <option value="$PROJECT_DIR$/src/com/anylogic/tilemaplib/PathOverlay.java" />
         <option value="$PROJECT_DIR$/src/com/anylogic/tilemaplib/PointOverlay.java" />
         <option value="$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileImageProvider.java" />
-        <option value="$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileMapPanel.java" />
         <option value="$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileGIS.java" />
+        <option value="$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileMapPanel.java" />
+        <option value="$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileSourceSelector.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1047" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1918" />
+    <option name="height" value="1027" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -219,6 +161,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="TileGISLibrary" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -286,7 +232,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.23870221" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="D:/Universidad Nacional/SEPRO/3.Programa/Plataformas/JAVA/GoogleMaps Java/Lugares/Lugares" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TileGISLibrary_v7.0.3" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
@@ -465,7 +411,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1047" extended-state="7" />
+    <frame x="1" y="1" width="1918" height="1027" extended-state="1" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -475,22 +421,22 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34533185" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34533185" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.16526316" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20208333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2031579" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39144385" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32931727" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32834226" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -722,32 +668,32 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602" />
       </provider>
     </entry>
-    <entry file="jar://D:/Universidad Nacional/SEPRO/3.Programa/Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/AOOverlay.class">
+    <entry file="jar://$PROJECT_DIR$/../../Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/AOOverlay.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="1" selection-start="761" selection-end="761" vertical-scroll-proportion="-14.28" vertical-offset="0" max-vertical-offset="459" />
       </provider>
     </entry>
-    <entry file="jar://D:/Universidad Nacional/SEPRO/3.Programa/Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/HyperArrays.class">
+    <entry file="jar://$PROJECT_DIR$/../../Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/HyperArrays.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="166" selection-end="166" vertical-scroll-proportion="-4.08" vertical-offset="0" max-vertical-offset="238" />
       </provider>
     </entry>
-    <entry file="jar://D:/Universidad Nacional/SEPRO/3.Programa/Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/IOverlay.class">
+    <entry file="jar://$PROJECT_DIR$/../../Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/IOverlay.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="10" selection-start="163" selection-end="163" vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="255" />
       </provider>
     </entry>
-    <entry file="jar://D:/Universidad Nacional/SEPRO/3.Programa/Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/MercatorProj.class">
+    <entry file="jar://$PROJECT_DIR$/../../Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/MercatorProj.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="166" selection-end="166" vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="442" />
       </provider>
     </entry>
-    <entry file="jar://D:/Universidad Nacional/SEPRO/3.Programa/Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/PathOverlay.class">
+    <entry file="jar://$PROJECT_DIR$/../../Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/PathOverlay.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="166" selection-end="166" vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="578" />
       </provider>
     </entry>
-    <entry file="jar://D:/Universidad Nacional/SEPRO/3.Programa/Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/TileGIS.class">
+    <entry file="jar://$PROJECT_DIR$/../../Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/com/anylogic/tilemaplib/TileGIS.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="166" selection-end="166" vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="1666" />
       </provider>
@@ -822,23 +768,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileMapPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileSourceSelector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="248" column="16" selection-start="8435" selection-end="8435" vertical-scroll-proportion="0.0" vertical-offset="3764" max-vertical-offset="9129">
+        <state line="267" column="40" selection-start="10936" selection-end="10936" vertical-scroll-proportion="0.50576925" vertical-offset="4106" max-vertical-offset="4675">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileGIS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="233" column="0" selection-start="8889" selection-end="8889" vertical-scroll-proportion="-0.35533553" vertical-offset="3961" max-vertical-offset="8976">
+        <state line="233" column="0" selection-start="8889" selection-end="8889" vertical-scroll-proportion="0.0" vertical-offset="3961" max-vertical-offset="8976">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileSourceSelector.java">
+    <entry file="file://$PROJECT_DIR$/src/com/anylogic/tilemaplib/TileMapPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="28" selection-start="1684" selection-end="1684" vertical-scroll-proportion="0.0" vertical-offset="25" max-vertical-offset="4369">
+        <state line="533" column="25" selection-start="20711" selection-end="20711" vertical-scroll-proportion="1.2527076" vertical-offset="8078" max-vertical-offset="9129">
           <folding />
         </state>
       </provider>

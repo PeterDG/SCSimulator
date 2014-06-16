@@ -1,23 +1,34 @@
 /*   1:    */ package com.anylogic.tilemaplib;
 /*   2:    */ 
 /*   3:    */ import com.xj.anylogic.engine.ActiveObject;
-/*   4:    */ import com.xj.anylogic.engine.ActiveObjectCollection;
-/*   5:    */ import com.xj.anylogic.engine.Engine;
-/*   6:    */ import com.xj.anylogic.engine.Presentable;
-/*   7:    */ import com.xj.anylogic.engine.presentation.Panel;
-/*   8:    */ import com.xj.anylogic.engine.presentation.ShapeComboBox;
-/*   9:    */ import com.xj.anylogic.engine.presentation.ShapeGroup;
-/*  10:    */ import com.xj.anylogic.engine.presentation.ShapeText;
-/*  11:    */ import com.xj.anylogic.engine.presentation.ShapeTopLevelPresentationGroup;
-/*  12:    */ import com.xj.anylogic.engine.presentation.UtilitiesColor;
-/*  13:    */ import com.xj.anylogic.engine.presentation.ViewArea;
-/*  14:    */ import java.awt.Color;
-/*  15:    */ import java.awt.Font;
-/*  16:    */ import java.awt.Graphics2D;
-/*  17:    */ import java.io.IOException;
-/*  18:    */ import java.io.ObjectInputStream;
-/*  19:    */ import java.io.ObjectOutputStream;
-/*  20:    */ import java.util.Map;
+import com.xj.anylogic.engine.ActiveObjectCollection;
+import com.xj.anylogic.engine.Engine;
+import com.xj.anylogic.engine.presentation.Panel;
+import com.xj.anylogic.engine.presentation.*;
+
+import java.awt.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Map;
+
+/*   4:    */
+/*   5:    */
+/*   6:    */
+/*   7:    */
+/*   8:    */
+/*   9:    */
+/*  10:    */
+/*  11:    */
+/*  12:    */
+/*  13:    */
+/*  14:    */
+/*  15:    */
+/*  16:    */
+/*  17:    */
+/*  18:    */
+/*  19:    */
+/*  20:    */
 /*  21:    */ 
 /*  22:    */ public class TileSourceSelector
 /*  23:    */   extends ActiveObject
@@ -258,8 +269,12 @@
 /* 258:    */   }
 /* 259:    */ }
 
-
-/* Location:           D:\Universidad Nacional\SEPRO\3.Programa\Plataformas\AnyLogic\Cadena de Suministro Industria Panificadora Palmira\SCBIP\GIS_alternatives_for_AnyLogic\TileGISLibrary\
- * Qualified Name:     com.anylogic.tilemaplib.TileSourceSelector
- * JD-Core Version:    0.7.0.1
+
+
+/* Location:           D:\Universidad Nacional\SEPRO\3.Programa\Plataformas\AnyLogic\Cadena de Suministro Industria Panificadora Palmira\SCBIP\GIS_alternatives_for_AnyLogic\TileGISLibrary\
+
+ * Qualified Name:     com.anylogic.tilemaplib.TileSourceSelector
+
+ * JD-Core Version:    0.7.0.1
+
  */

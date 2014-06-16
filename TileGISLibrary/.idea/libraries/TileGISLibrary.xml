@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="TileGISLibrary">
     <CLASSES>
-      <root url="jar://D:/Universidad Nacional/SEPRO/3.Programa/Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Plataformas/AnyLogic/Cadena de Suministro Industria Panificadora Palmira/SCBIP/TileGISLibrary.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
