@@ -293,6 +293,30 @@ InitialConfiguration();]]></StartupCode>
 						<Type><![CDATA[int]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1403225845631</Id>
+					<Name><![CDATA[TypePort]]></Name>
+					<X>-410</X><Y>2170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1403226042946</Id>
+					<Name><![CDATA[TypeAgent]]></Name>
+					<X>-410</X><Y>2100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1383582874658</Id>
 					<Name><![CDATA[TdiaP1]]></Name>
@@ -1159,6 +1183,19 @@ for( int j=1+Header; j<=NAgents; j++ ) {
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<FileName><![CDATA[DB Simulator.xlsx]]></FileName>
+					<SaveInSnapshot>false</SaveInSnapshot>
+					<LoadOnStartup>true</LoadOnStartup>
+					<SaveOnDispose>true</SaveOnDispose>
+				</ExcelFile>
+				<ExcelFile>
+					<Id>1403467493074</Id>
+					<Name><![CDATA[DBRoutes]]></Name>
+					<X>70</X><Y>2220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<FileName><![CDATA[DB Routes.xlsx]]></FileName>
 					<SaveInSnapshot>false</SaveInSnapshot>
 					<LoadOnStartup>true</LoadOnStartup>
 					<SaveOnDispose>true</SaveOnDispose>
@@ -6146,7 +6183,11 @@ if (listbox4.getValue()=="SUPPLIER") Source=OrderRM.TypeAgent.SPL_BAQUERY;*/]]><
 						<ActionCode><![CDATA[int Sor=(int)Source.getDoubleValue();
 int Tar=(int)Target.getDoubleValue();
 if (TypeSource=="MANUFACTURER" && TypeTarget=="DISTRIBUTOR") {currentRoute = A1.get(Sor).DistributorsRoutes.get(Tar);}
-if (TypeSource=="DISTRIBUTOR" && TypeTarget=="MANUFACTURER") {currentRoute = A1.get(Sor).ReverseDistributorsRoutes.get(Tar);}
+if (TypeSource=="DISTRIBUTOR" && TypeTarget=="MANUFACTURER") {currentRoute = A1.get(Sor).RDistributorsRoutes.get(Tar);}
+if (TypeSource=="MANUFACTURER" && TypeTarget=="MANUFACTURER") {
+	if(Sor>=Tar){currentRoute = A1.get(Sor).ManufacturersRoutes.get(Tar);}
+	if(Tar>Sor){currentRoute = A1.get(Tar).RManufacturersRoutes.get(Sor);}	
+}
 /*if (TypeSource=="DISTRIBUTOR") PointSor = getLocationNominatim(A2.get(Sor).getY(), A2.get(Sor).getX());
 if (TypeSource=="SUPPLIER") PointSor = getLocationNominatim(A3.get(Sor).getY(), A3.get(Sor).getX());
 
@@ -6193,6 +6234,120 @@ if (listbox6.getValue()=="MOTOCYCLE") TypeCom=1;]]></ActionCode>
 						<Button><![CDATA[MOTOCYCLE]]></Button>
 						<LinkTo>false</LinkTo>
 						<Link>TypeCom</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="ListBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1403225858618</Id>
+					<Name><![CDATA[listbox7]]></Name>
+					<X>-420</X><Y>2183</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="80" Height="47" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<ActionCode><![CDATA[/*if (listbox4.getValue()=="MANUFACTURER") Source=OrderRM.TypeAgent.CLIENT;
+if (listbox4.getValue()=="DISTRIBUTOR") Source=OrderRM.TypeAgent.BAQUERY;
+if (listbox4.getValue()=="SUPPLIER") Source=OrderRM.TypeAgent.SPL_BAQUERY;*/]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<MultipleSelection>false</MultipleSelection>
+						<Button><![CDATA[INFORMATION]]></Button>
+						<Button><![CDATA[MATERIAL]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>TypePort</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1403225898658</Id>
+					<Name><![CDATA[Go5]]></Name>
+					<X>-420</X><Y>2230</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="80" Height="20" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<ActionCode><![CDATA[int Sor=(int)Source.getDoubleValue();
+if (TypeSource=="MANUFACTURER" && TypeAgent=="PRV") {A1.get(Sor).PRD.get(0).Information_Port.receive(new Order());}]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Send]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="ListBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1403226042944</Id>
+					<Name><![CDATA[listbox8]]></Name>
+					<X>-420</X><Y>2113</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="80" Height="47" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<MultipleSelection>false</MultipleSelection>
+						<Button><![CDATA[PRV]]></Button>
+						<Button><![CDATA[PRD]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>TypeAgent</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1403226121317</Id>
+					<Name><![CDATA[Go6]]></Name>
+					<X>-420</X><Y>2250</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="80" Height="20" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<ActionCode><![CDATA[int Sor=(int)Source.getDoubleValue();
+if (TypeSource=="MANUFACTURER" && TypeAgent=="PRD" && TypePort=="INFORMATION") {
+	System.out.println(TypeSource+"+"+TypeAgent+"+"+TypePort);
+	A1.get(Sor).PRD.get(0).State=Actor.State.ACTIVE;
+	A1.get(Sor).PRD.get(0).Information_Port.receive(new Order(Actor.Type.CLIENT,0,Inventory.Type.PRODUCT,0,123));
+}
+if (TypeSource=="MANUFACTURER" && TypeAgent=="PRV" && TypePort=="INFORMATION") {
+	System.out.println(TypeSource+"+"+TypeAgent+"+"+TypePort);
+	A1.get(Sor).PRD.get(0).State=Actor.State.ACTIVE;
+	A1.get(Sor).PRV.get(0).Information_Port.receive("Necesito MP");
+}
+/*if (TypeSource=="MANUFACTURER" && TypeAgent=="PRD" && TypeAgent=="MATERIAL") {
+	ArrayList <Order>OrderList = new ArrayList();
+	OrderList.add(new Order(Actor.Type.DISTRIBUTOR_DST,0,Inventory.Type.RESOURCE,0,123));
+	OrderList.add(new Order(Actor.Type.DISTRIBUTOR_DST,0,Inventory.Type.RESOURCE,1,123));
+	OrderList.add(new Order(Actor.Type.DISTRIBUTOR_DST,0,Inventory.Type.RESOURCE,2,123));	
+	OrderList.add(new Order(Actor.Type.DISTRIBUTOR_DST,0,Inventory.Type.RESOURCE,3,123));
+	A1.get(Sor).PRD.get(0).Materials_Port.receive(OrderList);}
+if (TypeSource=="MANUFACTURER" && TypeAgent=="PRV" && TypeAgent=="INFORMATION") {A1.get(Sor).PRV.get(0).Information_Port.receive("Revisar Inventario");}
+if (TypeSource=="DISTRIBUTOR") {currentRoute = A1.get(Sor).ReverseDistributorsRoutes.get(0);}*/
+]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Receive]]></LabelText>
 					</ExtendedProperties>
 				</Control>
 			</Controls>
@@ -14476,9 +14631,10 @@ if (I <= Qmin)	Min_Stock=true; else Min_Stock=false;
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<IncomingMessageType><![CDATA[ArrayList<Order>]]></IncomingMessageType>
+					<IncomingMessageType><![CDATA[String]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[ArrayList<Order>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
+					<OnReceiveAction><![CDATA[aRevisar_Inventario();]]></OnReceiveAction>
 					<OnSendAction><![CDATA[System.out.println("Cantidad:"+msg.get(0).Amount);
 ]]></OnSendAction>
 				</Port>
@@ -14737,7 +14893,7 @@ aRevisar_Inventario();]]></EntryAction>
 						<FillColor/>
 
 						<Initializer><![CDATA[int i = 0]]></Initializer>
-						<Condition><![CDATA[i < Supply.size()-1]]></Condition>
+						<Condition><![CDATA[i < Supply.size()]]></Condition>
 						<Counting><![CDATA[i++]]></Counting>
 					</Properties>
 				</ActionChartElement>
@@ -17046,15 +17202,9 @@ for( ADistributor p : Main.A2 ) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<IncomingMessageType><![CDATA[Order]]></IncomingMessageType>
-					<OutgoingMessageType><![CDATA[Order]]></OutgoingMessageType>
+					<IncomingMessageType><![CDATA[ArrayList<Order>]]></IncomingMessageType>
+					<OutgoingMessageType><![CDATA[ArrayList<Order>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[
-//distributor = get_Baquery().get_Main().distributor.get(msg.IDSource);]]></OnReceiveAction>
-					<OnSendAction><![CDATA[//String Text=("Panaderia:"+ (int) ID +"." + NAME + ": Necesito:" + msg.IDRawMaterial + "unidades del insumo " + (int) msg.Amount);
-//Log.setText(Log.getText() +"\n"+ Text);
-//distributor.OutPort.receive(new OrderRM(ID,4,110));
-]]></OnSendAction>
 				</Port>
 				<Port>
 					<Id>1402638429328</Id>
@@ -17067,13 +17217,12 @@ for( ADistributor p : Main.A2 ) {
 					<IncomingMessageType><![CDATA[Order]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[ArrayList<Order>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[Client_OrderList.add(msg);
-Demand=msg.Amount;
-DemandaTotal+=Demand;
-//if(State==Actor.State.ACTIVE){
+					<OnReceiveAction><![CDATA[if(State==Actor.State.ACTIVE){
+	Client_OrderList.add(msg);
+	Demand=msg.Amount;
+	DemandaTotal+=Demand;
 	SuplirDemanda();
-//}]]></OnReceiveAction>
-					<OnSendAction><![CDATA[System.out.println("Cantidad:"+msg.get(0).Amount);]]></OnSendAction>
+}]]></OnReceiveAction>
 				</Port>
 			</Ports>
 			<Connectors>
@@ -17347,7 +17496,7 @@ Producir_Lote();]]></EntryAction>
 				<ActionChartElement Class="ActionChart">
 					<Id>1402639683993</Id>
 					<Name><![CDATA[SuplirDemanda]]></Name>
-					<X>150</X><Y>400</Y>
+					<X>170</X><Y>400</Y>
 					<Label><X>-44</X><Y>12</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17360,7 +17509,7 @@ Producir_Lote();]]></EntryAction>
 				<ActionChartElement Class="LocalVariable">
 					<Id>1402639774359</Id>
 					<Name><![CDATA[stock]]></Name>
-					<X>150</X><Y>511</Y>
+					<X>170</X><Y>511</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -17374,7 +17523,7 @@ Producir_Lote();]]></EntryAction>
 				<ActionChartElement Class="Decision">
 					<Id>1402639683995</Id>
 					<Name><![CDATA[decision5]]></Name>
-					<X>150</X><Y>561</Y>
+					<X>170</X><Y>561</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -17387,12 +17536,12 @@ Producir_Lote();]]></EntryAction>
 				<ActionChartElement Class="Code">
 					<Id>1402639684003</Id>
 					<Name><![CDATA[code8]]></Name>
-					<X>40</X><Y>635</Y>
+					<X>60</X><Y>635</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Comment><![CDATA[Demanda Insatisfecha]]></Comment>
-					<Properties Width="100" Height="75" Previous="1402639683995" >
+					<Properties Width="100" Height="75" Previous="1402639683995" Next="1403234216668" >
 						<FillColor>1694433280</FillColor>
 						<Code><![CDATA[DemandaInstisfecha+=Demanda;]]></Code>
 					</Properties>	
@@ -17400,7 +17549,7 @@ Producir_Lote();]]></EntryAction>
 				<ActionChartElement Class="Decision">
 					<Id>1402639683996</Id>
 					<Name><![CDATA[decision6]]></Name>
-					<X>310</X><Y>635</Y>
+					<X>330</X><Y>635</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -17411,14 +17560,27 @@ Producir_Lote();]]></EntryAction>
 					</Properties>
 				</ActionChartElement>
 				<ActionChartElement Class="Code">
+					<Id>1403234402511</Id>
+					<Name><![CDATA[code9]]></Name>
+					<X>230</X><Y>790</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Informar al agente proveedor]]></Comment>
+					<Properties Width="100" Height="70" Previous="1402639684000" >
+						<FillColor/>
+						<Code><![CDATA[Back.PRV.get(0).receive("Necesito inventario");]]></Code>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Code">
 					<Id>1402639684000</Id>
 					<Name><![CDATA[code7]]></Name>
-					<X>210</X><Y>702</Y>
+					<X>230</X><Y>702</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Comment><![CDATA[Produccion satisfecha parcialmente]]></Comment>
-					<Properties Width="100" Height="68" Previous="1402639683996" >
+					<Properties Width="100" Height="68" Previous="1402639683996" Next="1403234402511" >
 						<FillColor>1682342580</FillColor>
 						<Code><![CDATA[DemandaInstisfecha+=Demanda-stock;
 Product.get(0).I=0;]]></Code>
@@ -17427,7 +17589,7 @@ Product.get(0).I=0;]]></Code>
 				<ActionChartElement Class="Code">
 					<Id>1402639683997</Id>
 					<Name><![CDATA[code6]]></Name>
-					<X>410</X><Y>702</Y>
+					<X>430</X><Y>702</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -17440,7 +17602,7 @@ Product.get(0).I=0;]]></Code>
 				<ActionChartElement Class="Code">
 					<Id>1402639684002</Id>
 					<Name><![CDATA[code1]]></Name>
-					<X>310</X><Y>810</Y>
+					<X>330</X><Y>900</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -17453,7 +17615,7 @@ Product.get(0).I=0;]]></Code>
 				<ActionChartElement Class="Return">
 					<Id>1402639684005</Id>
 					<Name><![CDATA[returnStatement1]]></Name>
-					<X>150</X><Y>880</Y>
+					<X>170</X><Y>970</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -17464,7 +17626,7 @@ Product.get(0).I=0;]]></Code>
 				<ActionChartElement Class="LocalVariable">
 					<Id>1402639683994</Id>
 					<Name><![CDATA[Demanda]]></Name>
-					<X>150</X><Y>450</Y>
+					<X>170</X><Y>450</Y>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -17628,6 +17790,19 @@ Back.PRV.get(0).aRevisar_Inventario();]]></Code>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="80" Height="20" Previous="1402640674706" >
 						<FillColor>-726163</FillColor>
+					</Properties>	
+				</ActionChartElement>
+				<ActionChartElement Class="Code">
+					<Id>1403234216668</Id>
+					<Name><![CDATA[code2]]></Name>
+					<X>60</X><Y>730</Y>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Comment><![CDATA[Informar al agente proveedor]]></Comment>
+					<Properties Width="100" Height="80" Previous="1402639684003" >
+						<FillColor/>
+						<Code><![CDATA[Back.PRV.get(0).receive("Necesito inventario");]]></Code>
 					</Properties>	
 				</ActionChartElement>
 			</ActionChartElements>
@@ -25814,7 +25989,7 @@ InitialConfiguration();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[java.util.ArrayList]]></CollectionClass>
+						<CollectionClass><![CDATA[java.util.LinkedList]]></CollectionClass>
 						<ElementClass><![CDATA[RouteShp]]></ElementClass>
 						<ValueElementClass><![CDATA[RouteShp]]></ValueElementClass>
 					</Properties>
@@ -25822,8 +25997,38 @@ InitialConfiguration();]]></StartupCode>
 				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1402872487101</Id>
-					<Name><![CDATA[ReverseDistributorsRoutes]]></Name>
+					<Name><![CDATA[RDistributorsRoutes]]></Name>
 					<X>-660</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[java.util.ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[RouteShp]]></ElementClass>
+						<ValueElementClass><![CDATA[RouteShp]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1403477790833</Id>
+					<Name><![CDATA[ManufacturersRoutes]]></Name>
+					<X>-470</X><Y>225</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[java.util.LinkedList]]></CollectionClass>
+						<ElementClass><![CDATA[RouteShp]]></ElementClass>
+						<ValueElementClass><![CDATA[RouteShp]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1403477790835</Id>
+					<Name><![CDATA[RManufacturersRoutes]]></Name>
+					<X>-470</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -26005,7 +26210,7 @@ get_routes();]]></Body>
 					<ReturnType><![CDATA[void]]></ReturnType>
 					<Id>1401766425205</Id>
 					<Name><![CDATA[PRD_Creator]]></Name>
-					<X>-295</X><Y>240</Y>
+					<X>-105</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -26032,7 +26237,7 @@ int Header =3;
 					<ReturnType><![CDATA[void]]></ReturnType>
 					<Id>1401767395309</Id>
 					<Name><![CDATA[PRV_Creator]]></Name>
-					<X>-455</X><Y>240</Y>
+					<X>-265</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -26074,13 +26279,38 @@ int Header =3;
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[for(int i=0; i<Main.A2.size();i++){
+					<Body><![CDATA[String Token = "DistributorsRoutes";
+int Header =2;
+
+for(int i=0; i<Main.A2.size();i++){
     ADistributor d= Main.A2.get(i);    
     PointOverlay PointSor=Main.getLocationNominatim(Y,X);
 	PointOverlay PointTar=Main.getLocationNominatim(d.getY(),d.getX());
-	DistributorsRoutes.add(new RouteShp(Main.getRoute(PointSor.getPoint(),PointTar.getPoint()),false));
-	ReverseDistributorsRoutes.add(new RouteShp(Main.getRoute(PointSor.getPoint(),PointTar.getPoint()),true));	
+	String jsonResponse=Main.DBRoutes.getCellStringValue(Token,Header+1+i,(int)ID+1);
+	if(!jsonResponse.contains("shapePoints")){
+		jsonResponse =Main.getRoute(PointSor.getPoint(),PointTar.getPoint());
+		Main.DBRoutes.setCellValue(jsonResponse,Token,Header+1+i,(int)ID+1);
+	}	
+	DistributorsRoutes.add(new RouteShp(jsonResponse,false));
+	RDistributorsRoutes.add(new RouteShp(jsonResponse,true));	
 }
+Token = "ManufacturersRoutes";
+for(int i=0; i<Main.A1.size();i++){   
+	  if(i!=(int)ID){	  
+	    AManufacturer d= Main.A1.get(i);    
+	    PointOverlay PointSor=Main.getLocationNominatim(Y,X);
+		PointOverlay PointTar=Main.getLocationNominatim(d.getY(),d.getX());
+		String jsonResponse=Main.DBRoutes.getCellStringValue(Token,Header+1+i,(int)ID+1);
+		if(!jsonResponse.contains("shapePoints")){
+			jsonResponse =Main.getRoute(PointSor.getPoint(),PointTar.getPoint());
+			Main.DBRoutes.createCell(Token,Header+1+i,(int)ID+1);
+			Main.DBRoutes.setCellValue(jsonResponse,Token,Header+1+i,(int)ID+1);
+		}	
+		ManufacturersRoutes.add(new RouteShp(jsonResponse,false));
+		RManufacturersRoutes.add(new RouteShp(jsonResponse,true));	
+	}	
+}
+//Main.DBRoutes.writeFile();
 ]]></Body>
 				</Function>
 			</Functions>
@@ -26088,7 +26318,7 @@ int Header =3;
 				<EmbeddedObject>
 					<Id>1401532050269</Id>
 					<Name><![CDATA[PRV]]></Name>
-					<X>-460</X><Y>200</Y>
+					<X>-270</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -26123,7 +26353,7 @@ int Header =3;
 				<EmbeddedObject>
 					<Id>1401540524193</Id>
 					<Name><![CDATA[PRD]]></Name>
-					<X>-310</X><Y>200</Y>
+					<X>-120</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -27715,7 +27945,7 @@ System.out.println("Click");]]></OnClickCode>
 					<Id>1401766425200</Id>
 					<Name><![CDATA[line15]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-310</X><Y>225</Y>
+					<X>-120</X><Y>225</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -27742,7 +27972,7 @@ System.out.println("Click");]]></OnClickCode>
 					<Id>1401766425203</Id>
 					<Name><![CDATA[text22]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-305</X><Y>210</Y>
+					<X>-115</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -27766,7 +27996,7 @@ System.out.println("Click");]]></OnClickCode>
 					<Id>1401767395304</Id>
 					<Name><![CDATA[line22]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-470</X><Y>225</Y>
+					<X>-280</X><Y>225</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -27793,7 +28023,7 @@ System.out.println("Click");]]></OnClickCode>
 					<Id>1401767395307</Id>
 					<Name><![CDATA[text24]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-465</X><Y>210</Y>
+					<X>-275</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -27836,7 +28066,7 @@ System.out.println("Click");]]></OnClickCode>
 					<BeginArrowStyle>0</BeginArrowStyle>
 					<EndArrowSize>1</EndArrowSize>
 					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>70</Dx>
+					<Dx>355</Dx>
 					<Dy>0</Dy>
 					<Dz>0</Dz>
 				</Line>
