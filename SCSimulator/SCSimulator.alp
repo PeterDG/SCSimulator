@@ -383,6 +383,19 @@ InitialConfiguration();
 						<InitialValue><![CDATA[1]]></InitialValue>                 	
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1405100917955</Id>
+					<Name><![CDATA[Running]]></Name>
+					<X>-160</X><Y>2200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue><![CDATA[false]]></InitialValue>                 	
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1383582874658</Id>
 					<Name><![CDATA[TdiaP1]]></Name>
@@ -1059,7 +1072,7 @@ A1_UpdateParameters(1,"S");
 A1_UpdateParameters(1,"P");
 A2_UpdateParameters(1,"A");
 A2_UpdateParameters(1,"S");
-A1_UpdateStatistics(1);
+
 getEngine().setRealTimeScale(0.00000000001);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -10484,7 +10497,8 @@ A2_UpdateParameters(A2_S_ID_S.getIntValue(),"S");]]></ActionCode>
 radio.setHeight(837);
 radio.setWidth(1346);
 radio.setPos(-1778,1880);
-getEngine().setRealTimeScale(0.0027);]]></ActionCode>
+getEngine().setRealTimeScale(0.0027);
+Running=true]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="14" Style="1"/>
@@ -11240,7 +11254,8 @@ if (TypeSource=="DISTRIBUTOR") {currentRoute = A1.get(Sor).ReverseDistributorsRo
 	radio.setHeight(217);
 	radio.setWidth(1346);
 	radio.setPos(-1778,2500);
-}]]></ActionCode>
+}
+if(Running) A1_UpdateStatistics(1);]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Century" Size="14" Style="0"/>
